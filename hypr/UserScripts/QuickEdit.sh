@@ -1,54 +1,58 @@
 #!/bin/bash
 # Rofi menu for Quick Edit / View of Settings (SUPER E)
 
+# define your preferred text editor and terminal to use
+editor=nano
+tty=kitty
+
 configs="$HOME/.config/hypr/configs"
 UserConfigs="$HOME/.config/hypr/UserConfigs"
 
 menu(){
-  printf "1. view Env-variables\n"
-  printf "2. view Window-Rules\n"
-  printf "3. view Startup_Apps\n"
-  printf "4. view User-Keybinds\n"
-  printf "5. view Monitors\n"
-  printf "6. view Laptop-Keybinds\n"
-  printf "7. view User-Settings\n"
-  printf "8. view Workspace-Rules\n"
-  printf "9. view Default-Settings\n"
-  printf "10. view Default-Keybinds\n"
+  printf "1. edit Env-variables\n"
+  printf "2. edit Window-Rules\n"
+  printf "3. edit Startup_Apps\n"
+  printf "4. edit User-Keybinds\n"
+  printf "5. edit Monitors\n"
+  printf "6. edit Laptop-Keybinds\n"
+  printf "7. edit User-Settings\n"
+  printf "8. edit Workspace-Rules\n"
+  printf "9. edit Default-Settings\n"
+  printf "10. edit Default-Keybinds\n"
 }
 
 main() {
     choice=$(menu | rofi -i -dmenu -config ~/.config/rofi/config-compact.rasi | cut -d. -f1)
     case $choice in
         1)
-            kitty -e nano "$UserConfigs/ENVariables.conf"
+            $tty $editor "$UserConfigs/ENVariables.conf"
             ;;
         2)
-            kitty -e nano "$UserConfigs/WindowRules.conf"
+            $tty $editor "$UserConfigs/WindowRules.conf"
             ;;
         3)
-            kitty -e nano "$UserConfigs/Startup_Apps.conf"
+            $tty $editor "$UserConfigs/Startup_Apps.conf"
             ;;
         4)
-            kitty -e nano "$UserConfigs/UserKeybinds.conf"
+            $tty $editor "$UserConfigs/UserKeybinds.conf"
             ;;
         5)
-            kitty -e nano "$UserConfigs/Monitors.conf"
+            $tty $editor "$UserConfigs/Monitors.conf"
             ;;
         6)
-            kitty -e nano "$UserConfigs/Laptops.conf"
+            $tty $editor "$UserConfigs/Laptops.conf"
             ;;
         7)
-            kitty -e nano "$UserConfigs/UserSettings.conf"
+            $tty $editor "$UserConfigs/UserSettings.conf"
             ;;
         8)
-            kitty -e nano "$UserConfigs/WorkspaceRules.conf"
+            $tty $editor "$UserConfigs/WorkspaceRules.conf"
             ;;
 		9)
-            kitty -e nano "$configs/Settings.conf"
+            $tty $editor "$configs/Settings.conf"
             ;;
         10)
-            kitty -e nano "$configs/Keybinds.conf"
+            $tty $editor "$configs/Keybinds.conf"
             ;;
         *)
             ;;
