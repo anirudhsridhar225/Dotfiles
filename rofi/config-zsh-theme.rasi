@@ -11,7 +11,6 @@ configuration {
 /* ---- Window ---- */
 window {
   width: 40%;
-  border-radius: 15px;
 }
 
 /* ---- Imagebox ---- */
@@ -23,13 +22,11 @@ imagebox {
 
 /* ---- Listbox ---- */
 listbox {
-  border-radius: 12px;
 }
 
 /* ---- Inputbar ---- */
 inputbar {
   padding: 14px;
-  border-radius: 10px;
 }
 
 entry {
@@ -41,17 +38,14 @@ listview {
   columns: 3;
   lines: 3;
   spacing: 4px;
-  border-radius: 10px;
 }
 
 /* ---- Element ---- */
 element {
-  border-radius: 10px;
 }
 
 /*****----- Message -----*****/
 message {
-  border-radius: 10px;
 }
 
 textbox {
