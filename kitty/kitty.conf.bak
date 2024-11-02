@@ -8,7 +8,7 @@ window_padding_width 10
 editor nvim
 
 font_size 12
-# font_family IntelOneMonoNerdFont 
+font_family IntelOneMonoNerdFont 
 /* font_family JetBrains Mono Regular Nerd Font Complete Mono */
 
 /* cursor #08bfd4 */
@@ -85,11 +85,3 @@ inactive_tab_font_style bold
 # Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME
-
-
-# BEGIN_KITTY_FONTS
-font_family      family="JetBrainsMono Nerd Font Mono"
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-# END_KITTY_FONTS

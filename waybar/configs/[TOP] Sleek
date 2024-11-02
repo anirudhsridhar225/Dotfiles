@@ -12,27 +12,19 @@
 	
 "modules-left": [
 	"custom/menu",
-	"custom/separator#blank_2",
-	"hyprland/workspaces",
-	"custom/separator#blank_2",
+	"hyprland/workspaces#roman",
 	"mpris",
 	"tray"
 ],
 
 "modules-center": [
-	"idle_inhibitor",
-	"custom/separator#blank",
-	"clock#3",
-	"custom/separator#blank",
+	"clock#2",
 	"custom/swaync"
 ],
 		
 "modules-right": [
 	"hyprland/window",
-	"custom/separator#blank",
-	"custom/separator#blank", 
 	"pulseaudio",
-	"custom/separator#blank",
 	"custom/power",					
 	],
 }
