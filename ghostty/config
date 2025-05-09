@@ -1,0 +1,7 @@
+font-family = "JetBrainsMono NFM Semibold"
+font-size = 13.5
+window-padding-x = 15
+window-padding-y = 15
+background-opacity = 0.78
+theme = catppuccin-mocha
+cursor-style = bar
