@@ -76,6 +76,7 @@ vim.o.tabstop = 4
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', ':', '<Plug>(cmdpalette)')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -87,6 +88,17 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+vim.keymap.set('n', '<leader>lg', function()
+  vim.cmd 'tabnew' -- Open a new tab
+  vim.cmd 'term lazygit' -- Open terminal and run lazygit
+  vim.cmd 'startinsert' -- Enter insert mode to interact with terminal
+end, { noremap = true, silent = true, desc = 'Open lazygit' })
+
+vim.keymap.set('n', '<leader>tx', function()
+  vim.cmd 'tabnew'
+  vim.cmd 'term'
+end, { noremap = true, silent = true, desc = 'Open terminal' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -809,7 +821,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'minischeme'
+      vim.cmd.colorscheme 'tokyonight'
     end,
   },
 
@@ -841,18 +853,6 @@ require('lazy').setup({
       -- set use_icons to true if you have a Nerd Font
       statusline.setup {
         use_icons = vim.g.have_nerd_font,
-        content = {
-          active = function()
-            local mode = statusline.section_mode { trunc_width = 120 }
-            local filename = statusline.section_filename { trunc_width = 75 }
-
-            return statusline.combine_groups {
-              { hl = 'MiniStatuslineMode', strings = { mode } },
-              '%=',
-              { hl = 'MiniStatuslineFileName', strings = { filename } },
-            }
-          end,
-        },
       }
 
       -- You can configure sections in the statusline by overriding their
@@ -948,9 +948,9 @@ require('lazy').setup({
 })
 
 -- statusline colors
-vim.api.nvim_set_hl(0, 'MiniStatuslineMode', { bg = '#7aa2f7', fg = '#1a1b26', bold = true })
-vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { bg = '#7aa2f7', fg = '#1a1b26', bold = true })
-vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { bg = '#7aa2f7', fg = '#1a1b26', bold = true })
+-- vim.api.nvim_set_hl(0, 'MiniStatuslineMode', { fg = '#f38ba8', bold = true })
+-- vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { fg = '#f38ba8', bold = true })
+-- vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { fg = '#f38ba8', bold = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
