@@ -16,9 +16,7 @@ vim.o.mouse = 'a'
 vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -114,6 +112,19 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- leetcode keybinds
+vim.keymap.set('n', '<leader>lt', function()
+  vim.cmd 'Leet'
+end, { desc = 'open leetcode' })
+
+vim.keymap.set('n', '<leader>lr', function()
+  vim.cmd 'Leet run'
+end, { desc = 'run leetcode solution' })
+
+vim.keymap.set('n', '<leader>ls', function()
+  vim.cmd 'Leet submit'
+end, { desc = 'submit leetcode solution' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -357,6 +368,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
