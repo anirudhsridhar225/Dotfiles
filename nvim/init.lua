@@ -98,6 +98,11 @@ vim.keymap.set('n', '<leader>tx', function()
   vim.cmd 'term'
 end, { noremap = true, silent = true, desc = 'Open terminal' })
 
+vim.keymap.set('n', '<space>sf', function()
+  vim.cmd 'tabnew'
+  require('telescope.builtin').find_files()
+end, { noremap = true, silent = true })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -738,6 +743,7 @@ require('lazy').setup({
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip.loaders.from_lua').lazy_load { paths = '/home/anirudh/.config/nvim/LuaSnip/snippets' }
             end,
           },
         },
@@ -959,10 +965,13 @@ require('lazy').setup({
   },
 })
 
--- statusline colors
--- vim.api.nvim_set_hl(0, 'MiniStatuslineMode', { fg = '#f38ba8', bold = true })
--- vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { fg = '#f38ba8', bold = true })
--- vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { fg = '#f38ba8', bold = true })
+-- insert-mode abbreviations
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'py',
+  callback = function()
+    vim.cmd 'iabbrev _inf float("-inf")'
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
