@@ -52,12 +52,17 @@ vim.pack.add({
 
     -- Statusline
     "https://github.com/nvim-lualine/lualine.nvim",
+    "https://github.com/akinsho/bufferline.nvim",
+    "https://github.com/tiagovla/scope.nvim",
 
     -- Git signs
     "https://github.com/lewis6991/gitsigns.nvim",
 
     -- Todo comments
-    "https://github.com/folke/todo-comments.nvim"
+    "https://github.com/folke/todo-comments.nvim",
+
+    -- Auto Pairs
+    "https://github.com/windwp/nvim-autopairs"
 })
 
 -- =========================
@@ -277,6 +282,16 @@ require("lualine").setup({
 require("gitsigns").setup()
 
 -- =========================
+-- Bufferline
+-- =========================
+require("bufferline").setup()
+
+-- =========================
+-- Scope
+-- =========================
+require("scope").setup()
+
+-- =========================
 -- Todo comments
 -- =========================
 require("todo-comments").setup({
@@ -339,3 +354,9 @@ vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<leader>tn", ":tabnew<CR>")
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
+vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
+
+vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>")
